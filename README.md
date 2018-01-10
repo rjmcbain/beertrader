@@ -12,7 +12,10 @@ In this app, users will be able to login to view potential beers for trade.
 
 HTML  |  CSS  |  Javascript  |  Node.js  |  Mongo  |  Mongoose  
 
-### Links
+### Wireframe
+
+
+### Trello
 
 
 ### App
