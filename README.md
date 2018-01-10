@@ -6,17 +6,9 @@ It is a beer trading app that allows users to connect and trade all kinds of bee
 
 In this app, users will be able to login to view potential beers for trade. 
 
-### Languages Used
+### Technologies Used
 
-HTML  |  CSS  |  Javascript
-
-### Frameworks
-
-Node.js
-
-### Database
-
-Mongo  |  Mongoose  
+HTML  |  CSS  |  Javascrip  |  Node.js  |  Mongo  |  Mongoose  
 
 ### Wireframe
 [https://imgur.com/a/jbC7f](https://imgur.com/a/jbC7f)
