@@ -8,7 +8,15 @@ In this app, users will be able to login to view potential beers for trade.
 
 ### Languages Used
 
-HTML  |  CSS  |  Javascript  |  Node.js  |  Mongo  |  Mongoose  
+HTML  |  CSS  |  Javascript
+
+### Frameworks
+
+Node.js
+
+### Database
+
+Mongo  |  Mongoose  
 
 ### Wireframe
 [https://imgur.com/a/jbC7f](https://imgur.com/a/jbC7f)
