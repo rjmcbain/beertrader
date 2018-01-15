@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/rjmcbain/beertrader#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mongoose": "^5.0.0-rc2"
+    "mongo": "^0.1.0",
+    "mongoose": "^5.0.0-rc2",
+    "request": "^2.83.0"
   }
 }

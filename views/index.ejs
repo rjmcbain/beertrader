@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Trader</title>
+    <link rel="stylesheet" href="../public/styles/main.css">
+</head>
+<body >
+
+    <div class="container">
+
+        <h1>Beer Trader</h1>
+        <form method="GET" action="/beerList">
+            <label for="beerList">Which beer would you like to search for</label>
+            <br><br>
+            <input type="text" name="beerinfo" placeholder="Search">
+            <br><br>
+            <input id="beerSubmit" class="submit" type="submit" value="Submit">
+        </form>
+
+        <ul id="beers"></ul>
+
+   
+        <!-- <form action="/api" method="POST">
+            <input class="submit" type="submit" value="Test API Call">
+            <br><br>
+        </form> -->
+
+    </div>
+	
+	<script
+  	src="https://code.jquery.com/jquery-3.2.1.min.js"
+  	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  	crossorigin="anonymous"></script>
+    <script src="../public/scripts/app.js"></script>
+</body>
+</html>
