@@ -7,11 +7,7 @@ const controllers = require(__dirname + "/controllers/controllers");
 
 router.get('/', controllers.hello);	
 
-router.get('/beerlist', controllers.beerList);								//they visit our page
-
-// router.get('/beerlist', controllers.beerList);
-
-// router.get('/')
+router.get('/beerlist', controllers.beerList);
 
 module.exports = router;
 

@@ -27,12 +27,16 @@ var db = mongoose.connection;
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 // app.engine('ejs', require('ejs').renderFile);
 // app.set('view engine', 'ejs');
 
 app.get('/', function homepage (req, res) {
 	res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/', function homepage (req, res) {
+	res.sendFile(__dirname + '/public/styles');
 });
 
 app.use(express.static("/public/main.css"));

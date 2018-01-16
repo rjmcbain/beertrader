@@ -22,7 +22,7 @@ function beerList(req, res){
 					brewery: result.data[0].breweries[0].name
 
 				};
-					console.log(beer);
+					// console.log(beer);
 				let beerDb = new Listbeer();
 					
 					beerDb.name= result.data[0].name,
