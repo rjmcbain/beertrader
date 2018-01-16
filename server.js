@@ -11,7 +11,7 @@ const router = require('./router');
 const path = require('path');
 
 app.use(function(request, response, next) {
-	console.log("Just got a request");
+	// console.log("Just got a request");
 	next();
 })
 
@@ -21,7 +21,7 @@ app.use(function(request, response, next) {
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/beertrader');
-// var db = mongoose.connection
+var db = mongoose.connection;
 
 //requests
 
@@ -33,6 +33,15 @@ app.set('view engine', 'ejs');
 
 // app.set('views', './views');
 
+
+app.post('api/beers', function(req, res){
+	var newBeer = new db.Beer ({
+		name: req.body.name,
+		abv: req.body.abv,
+		style: req.body.style,
+		brewery: req.body.brewery
+	})
+})
 
 app.use('/', router);
 
