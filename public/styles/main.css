@@ -1,3 +1,11 @@
 body {
-	background-color: black;
+	background-image: url("../beer.jpg");
+}
+
+.dark {
+	color: purple;
+}
+
+.navbar {
+	text-align: center;
 }
