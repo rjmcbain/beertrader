@@ -27,9 +27,15 @@ var db = mongoose.connection;
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.engine('ejs', require('ejs').renderFile);
-app.set('view engine', 'ejs');
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.engine('ejs', require('ejs').renderFile);
+// app.set('view engine', 'ejs');
+
+app.get('/', function homepage (req, res) {
+	res.sendFile(__dirname + '/views/index.html');
+});
+
+app.use(express.static("/public/main.css"));
 
 // app.set('views', './views');
 
@@ -45,6 +51,6 @@ app.post('api/beers', function(req, res){
 
 app.use('/', router);
 
-app.listen(3000, function() {
-	console.log("Listening at http://localhost:3000");
+app.listen(port, function() {
+  console.log('server started on', port);
 });

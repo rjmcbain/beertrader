@@ -1,7 +1,7 @@
 //functions (chefs)
 const env = require('../env');
 const request = require('request');
-const Beer = require('../models/beer.js');
+const Listbeer = require('../models/beer.js');
 
 function hello(req, res){					//This is what the
 	res.render('index');							//user sees when
@@ -12,7 +12,7 @@ function beerList(req, res){
 	let url = "http://api.brewerydb.com/v2/beers/?name=" + req.query.beerinfo + "&key=" + env.apiKey + "&format=json&withBreweries=Y";
 			request(url, function(req, res, body){
 					
-				if (body.totalResults){
+				// if (body.totalResults){
 
 				let result = JSON.parse(body);
 				let beer = {
@@ -23,7 +23,7 @@ function beerList(req, res){
 
 				};
 					console.log(beer);
-				let beerDb = new Beer();
+				let beerDb = new Listbeer();
 					
 					beerDb.name= result.data[0].name,
 					beerDb.abv= result.data[0].abv,
@@ -40,9 +40,9 @@ function beerList(req, res){
 				// console.log(result.data[0].name);
 				// console.log(result.data[0].abv);
 				// console.log(result.data[0].breweries[0].name);
-				} else {
-					sendResponse('The beer you wanted is unavailable');
-				}	// // console.log(typeof(result));
+				// } else {
+				// 	sendResponse('The beer you wanted is unavailable');
+				// }	// // console.log(typeof(result));
 			})		
 
 			function sendResponse(beer){

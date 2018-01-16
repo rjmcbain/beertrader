@@ -7,6 +7,6 @@ let beerSchema = new mongoose.Schema({
 	brewery: String
 });
 
-let Beer = mongoose.model("Beer", beerSchema);
+let Listbeer = mongoose.model("Beer", beerSchema);
 
-module.exports = Beer;
+module.exports = Listbeer;
