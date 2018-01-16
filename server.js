@@ -10,15 +10,6 @@ const port = process.env.PORT || 3000;
 const router = require('./router');
 const path = require('path');
 
-app.use(function(request, response, next) {
-	// console.log("Just got a request");
-	next();
-})
-
-// //api key
-// const api = require("./env");
-// 	console.log(api);
-
 //connect to mongoose
 mongoose.connect('mongodb://localhost/beertrader');
 var db = mongoose.connection;
@@ -31,20 +22,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 // app.engine('ejs', require('ejs').renderFile);
 // app.set('view engine', 'ejs');
 
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function homepage (req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
-
-// app.use(express.static(__dirname + 'views'));
-
-// app.get('/', function homepage (req, res) {
-// 	res.sendFile(__dirname + '/public/styles');
-// });
-
-// app.use(express.static("/public/main.css"));
-
-// app.set('views', './views');
-
 
 app.post('api/beers', function(req, res){
 	var newBeer = new db.Beer ({
@@ -57,6 +39,6 @@ app.post('api/beers', function(req, res){
 
 app.use('/', router);
 
-app.listen(process.env.PORT, function() {
+app.listen(port, function() {
   console.log('server started on', port);
 });
