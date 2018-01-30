@@ -23,11 +23,11 @@ const api_route = require('./config/api_route');
 //Passport Config
 require('./config/passport')(passport);
 
-//Connect to Mongoose
-mongoose.connect('mongodb://localhost/beer-trader', {
-})
-.then(() => console.log('MongoDB Connected'))
-.catch(err => console.log(err));
+// //Connect to Mongoose
+// mongoose.connect('mongodb://localhost/beer-trader', {
+// })
+// .then(() => console.log('MongoDB Connected'))
+// .catch(err => console.log(err));
 
 //Handlebars Middleware
 
@@ -85,6 +85,6 @@ app.use('/', api_route);
 app.use('/ideas', router)
 app.use('/users', users);
  
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
 	console.log(`Listening on ${port}`);
 });
