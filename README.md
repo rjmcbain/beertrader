@@ -18,4 +18,4 @@ HTML  |  CSS  |  Javascript  |  Node.js  |  Mongo  |  Mongoose
 
 ### App
 
-[https://beer-trader.herokuapp.com/](https://beer-trader.herokuapp.com/)
+[https://beer-trader1.herokuapp.com/](https://beer-trader.herokuapp.com/)
