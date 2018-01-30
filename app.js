@@ -81,7 +81,7 @@ app.get('/about', (req, res) => {
 });
 
 // Use Routes
-app.use('/', api_route);
+app.use('/api', api_route);
 app.use('/ideas', router)
 app.use('/users', users);
  
