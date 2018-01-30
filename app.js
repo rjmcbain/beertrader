@@ -11,6 +11,7 @@ const path = require('path');
 const env = require('./env');
 const port = 3000;
 
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/beer-trader" );
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -23,7 +24,7 @@ const api_route = require('./config/api_route');
 require('./config/passport')(passport);
 
 //Connect to Mongoose
-mongoose.connect('mongodb://localhost/vidjot-dev', {
+mongoose.connect('mongodb://localhost/beer-trader', {
 })
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err));
