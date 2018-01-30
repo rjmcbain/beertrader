@@ -1,4 +1,9 @@
-body {
+.logo{
+    width: 130px;
+    margin: auto;
+}
+
+bgimg {
 	background-image: url("../beer.jpg");
 	background-size: cover; 
 	background-repeat: no-repeat;
@@ -11,15 +16,17 @@ body {
 	text-align: center;
 	background-color: #f7c138;
 	font-family: 'Maven Pro 900', sans-serif, Helvetica;
-	font-weight: bold;
+    font-weight: bold;
+    color: white;
 }
 
 .navbar-brand {
 	font-size: 32px;
 	padding-left: 120px;
-
+    color: white;
 }
 
 .nav-link {
-	margin-left: 500px;
+    margin-left: 45px;
+    color: white;
 }

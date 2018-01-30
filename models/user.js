@@ -1,14 +1,20 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
-let UserSchema = new mongoose.Schema({
-	email: String,
-	password: String
+const Schema = mongoose.Schema;
+
+//Create Schema
+const UserSchema = new Schema({
+    name : {
+        type: String,
+        required: true
+    },
+    email : {
+        type: String,
+        required: true
+    },
+    password : {
+        type: String,
+        required: true
+    }
 });
 
-UserSchema.methods.encrypt = function(password){
-	bcrypt.hashSync(password, bcrypt.genSaltSync(8));
-}
-
-let User = mongoose.model('User', UserSchema);
-
-module.exports = User;
+mongoose.model('users', UserSchema);

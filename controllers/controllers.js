@@ -1,16 +1,13 @@
 //functions (chefs)
 const env = require('../env');
 const request = require('request');
-const Listbeer = require('../models/beer.js');
-
-function hello(req, res){					//This is what the
-	res.render('index');							//user sees when
-};				
+const Listbeer = require('../models/beer.js');			
 
 function beerList(req, res){
 	// console.log(env.apiKey);
 	let url = "http://api.brewerydb.com/v2/beers/?name=" + req.query.beerinfo + "&key=" + env.apiKey + "&format=json&withBreweries=Y";
-			request(url, function(req, res, body){
+	console.log('im working');		
+	request(url, function(req, res, body){
 					
 				// if (body.totalResults){
 
@@ -46,12 +43,11 @@ function beerList(req, res){
 			})		
 
 			function sendResponse(beer){
-				res.send(beer);
+				res.json(beer);
 			}
 	// res.send('Hello again!');
 }
 
-module.exports.hello = hello;
 module.exports.beerList = beerList;
 
 

@@ -1,63 +1,39 @@
-var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user');
+const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-module.exports = function(passport){
+//Load User Model
 
-	passport.serializeUser(function(user, callback) {
-		callback(null, user.id);
-	});
+const User = mongoose.model('users');
 
-	passport.deserializeUser(function(id, callback) {
-		User.findById(id, function(err, user){
-			callback(err, user);
-		});
-	});
+module.exports = function(passport) {
+    passport.use(new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
+        //Match User
+        User.findOne({
+            email:email
+        }).then(user=> {
+            if(!user){
+                return done(null, false, {message: 'NO USER FOUND'});
+            }
 
-	passport.use('local-signup', new LocalStrategy({
-		usernameField : 'email',
-		passwordField : 'password',
-		passReqToCallback : true
-	}, function(req, email, password, callback){
-
-		User.findOne({"local.email" : email }, function(err, user){
-			if (err) return callback(err);
-
-			if (user){
-				return callback(null, false, req.flash('signupMessage', "This email is already used."))
-			} else {
-				var newUser = new User();
-				newUser.local.email = email;
-				newUser.local.password = newUser.encrypt(password);
-
-				newUser.save(function(err){
-					if(err) throw err;
-					return callback(null,newUser);
-			});
-      }
-    });
-  }));
-
-	passport.use('local-login', new LocalStrategy({
-		usernameField : 'email',
-		passwordField : 'password',
-		passReqToCallback : true
-	}, function (req, email, password, callback) {
-
-		//Search for a user with this email
-		User.findOne({ 'local.email' : email }, function(err, user) {
-			if (err) {
-				return callback(err);
-			}
-		//If no user is found
-			if (!user) {
-				return callback(null, false, req.flash('loginMessage', 'No user found.'));
-			}
-		//Wrong Password
-			if (!user.validPassword(password)){
-				return callback(null, false, req.flash('loginMessage', 'Oops! Wrong Password'));
-			}
-
-			return callback(null, user);
-		})
-	}));
-};
+        //Match Password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if(err) throw err;
+            if(isMatch){
+                return done (null, user);
+            } else{
+                return done (null, false, {message: 'PASSWORD INCORRECT'});
+            }
+          })
+        }) 
+    }));
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+          done(err, user);
+        });
+      });
+}
