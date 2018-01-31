@@ -71,7 +71,7 @@ app.use(function(req, res, next){
 //Index Route
 app.get('/', (req, res) => {
 	const title = 'Welcome';
-	res.render('layouts/main', {
+	res.render('index', {
 		title: title
 	});
 });
